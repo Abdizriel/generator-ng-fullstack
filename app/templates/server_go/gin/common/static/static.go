@@ -3,16 +3,15 @@ package static
 import (
 	"os"
 
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
+	"github.com/gin-gonic/gin"
 )
 
-func Init(e *echo.Echo) {
-	e.Use(middleware.Static("node_modules"))
+func Init(r *gin.Engine) {
+	r.Static("/node_modules", "./node_modules")
 
 	if env := os.Getenv("GO_ENV"); env == "" {
-		e.Use(middleware.Static("client/dev"))
+		r.Static("/client/dev", "./client/dev")
 	} else {
-		e.Use(middleware.Static("client/dist"))
+		r.Static("/client/dist", "./client/dist")
 	}
 }

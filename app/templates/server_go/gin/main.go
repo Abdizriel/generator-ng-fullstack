@@ -3,8 +3,7 @@ package main
 import (
 	"fmt"
 	"<%= repoHostUrl %>/<%= userNameSpace %>/<%= appName %>/server/routes"
-	"github.com/labstack/echo"
-	"github.com/labstack/echo/engine/fasthttp"
+	"github.com/gin-gonic/gin"
 )
 
 const port string = ":3333"
@@ -12,9 +11,9 @@ const port string = ":3333"
 func main() {
 	fmt.Printf("Running at %v\n", port)
 
-	e := echo.New()
+	r := gin.Default()
 
-	routes.Init(e)
+	routes.Init(r)
 
-	e.Run(fasthttp.New(port))
+	r.Run(port)
 }
