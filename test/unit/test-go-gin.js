@@ -1,15 +1,18 @@
 import {expect} from 'chai';
 import sinon from 'sinon';
 import knownPaths from '../../_ng/utils/known_paths';
-import {GoServer} from '../../_ng/server/go';
+import {GoFactory} from '../../_ng/server/go_factory';
+import {GoGin} from '../../_ng/server/go_gin';
 
 describe('go', () => {
-  describe('go', () => {
     describe('creation', () => {
       it('should have the wrapper as the object passed by param', () => {
-        let _newGenerator = {a: true};
+        let _newGenerator = {
+          a: true,
+          webFrameworkServer: 'gin'
+        };
 
-        let _n = new GoServer(_newGenerator);
+        let _n = new GoFactory(_newGenerator);
 
         expect(_n.wrapper).to.equal(_newGenerator);
       })
@@ -26,7 +29,7 @@ describe('go', () => {
           template: sinon.spy()
         }
 
-        let _n = new GoServer(_newGenerator);
+        let _n = new GoBase(_newGenerator);
 
         _n.copyFiles();
 
@@ -133,7 +136,7 @@ describe('go', () => {
           template: sinon.spy()
         }
 
-        let _n = new GoServer(_newGenerator);
+        let _n = new GoBase(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -287,7 +290,7 @@ describe('go', () => {
           secure: true
         }
 
-        let _n = new GoServer(_newGenerator);
+        let _n = new GoBase(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -441,7 +444,7 @@ describe('go', () => {
           secure: true
         }
 
-        let _n = new GoServer(_newGenerator);
+        let _n = new GoBase(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -597,7 +600,7 @@ describe('go', () => {
           secure: true
         }
 
-        let _n = new GoServer(_newGenerator);
+        let _n = new GoBase(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -734,7 +737,7 @@ describe('go', () => {
           secure: true
         }
 
-        let _n = new GoServer(_newGenerator);
+        let _n = new GoBase(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -858,5 +861,4 @@ describe('go', () => {
         expect(_n.wrapper.template.calledWith(_fifteenfhCall[0], _fifteenfhCall[1], _fifteenfhCall[2])).to.be.true;
       });
     });
-  })
 })

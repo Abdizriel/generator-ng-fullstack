@@ -16,16 +16,17 @@ const basePath = (generator) => {
   }
 }
 
-class GoServer {
-  constructor(generator) {
+class GoBase {
+  constructor(generator, webFrameworkServer) {
     this.wrapper = generator;
+    this.wrapper.webFrameworkServer = webFrameworkServer;
   }
 
   copyFiles() {
     let _featureWithoutTrailingSlash = this.wrapper.feature.replace('/', '');
     let gen = basePath(this.wrapper);
 
-    this.wrapper.template('go/echo/endpoint.route.go', `${gen.route}.go`, {
+    this.wrapper.template('go/'+this.wrapper.webFrameworkServer+'/endpoint.route.go', `${gen.route}.go`, {
       name: this.wrapper.name,
       nameLowerCase: this.wrapper.name.toLowerCase(),
       userNameSpace: this.wrapper.userNameSpace,
@@ -34,7 +35,7 @@ class GoServer {
       feature: _featureWithoutTrailingSlash
     });
 
-    this.wrapper.template('go/echo/endpoint.controller.go', `${gen.controller}.go`, {
+    this.wrapper.template('go/'+this.wrapper.webFrameworkServer+'/endpoint.controller.go', `${gen.controller}.go`, {
       name: this.wrapper.name,
       nameLowerCase: this.wrapper.name.toLowerCase(),
       userNameSpace: this.wrapper.userNameSpace,
@@ -43,7 +44,7 @@ class GoServer {
       feature: _featureWithoutTrailingSlash
     });
 
-    this.wrapper.template('go/echo/endpoint.dao.go', `${gen.dao}.go`, {
+    this.wrapper.template('go/'+this.wrapper.webFrameworkServer+'/endpoint.dao.go', `${gen.dao}.go`, {
       name: this.wrapper.name,
       nameLowerCase: this.wrapper.name.toLowerCase(),
       userNameSpace: this.wrapper.userNameSpace,
@@ -52,7 +53,7 @@ class GoServer {
       feature: _featureWithoutTrailingSlash
     });
 
-    this.wrapper.template('go/echo/endpoint.model.go', `${gen.model}.go`, {
+    this.wrapper.template('go/'+this.wrapper.webFrameworkServer+'/endpoint.model.go', `${gen.model}.go`, {
       name: this.wrapper.name,
       nameLowerCase: this.wrapper.name.toLowerCase(),
       userNameSpace: this.wrapper.userNameSpace,
@@ -61,7 +62,7 @@ class GoServer {
       feature: _featureWithoutTrailingSlash
     });
 
-    this.wrapper.template('go/echo/endpoint.dao_test.go', `${gen.daoTest}.go`, {
+    this.wrapper.template('go/'+this.wrapper.webFrameworkServer+'/endpoint.dao_test.go', `${gen.daoTest}.go`, {
       name: this.wrapper.name,
       nameLowerCase: this.wrapper.name.toLowerCase(),
       userNameSpace: this.wrapper.userNameSpace,
@@ -70,7 +71,7 @@ class GoServer {
       feature: _featureWithoutTrailingSlash
     });
 
-    this.wrapper.template('go/echo/endpoint.model_test.go', `${gen.modelTest}.go`, {
+    this.wrapper.template('go/'+this.wrapper.webFrameworkServer+'/endpoint.model_test.go', `${gen.modelTest}.go`, {
       name: this.wrapper.name,
       nameLowerCase: this.wrapper.name.toLowerCase(),
       userNameSpace: this.wrapper.userNameSpace,
@@ -79,7 +80,7 @@ class GoServer {
       feature: _featureWithoutTrailingSlash
     });
 
-    this.wrapper.template('go/echo/endpoint.controller_test.go', `${gen.controllerTest}.go`, {
+    this.wrapper.template('go/'+this.wrapper.webFrameworkServer+'/endpoint.controller_test.go', `${gen.controllerTest}.go`, {
       name: this.wrapper.name,
       nameLowerCase: this.wrapper.name.toLowerCase(),
       userNameSpace: this.wrapper.userNameSpace,
@@ -88,7 +89,7 @@ class GoServer {
       feature: _featureWithoutTrailingSlash
     });
 
-    this.wrapper.template('go/echo/endpoint.route_test.go', `${gen.routeTest}.go`, {
+    this.wrapper.template('go/'+this.wrapper.webFrameworkServer+'/endpoint.route_test.go', `${gen.routeTest}.go`, {
       name: this.wrapper.name,
       nameLowerCase: this.wrapper.name.toLowerCase(),
       userNameSpace: this.wrapper.userNameSpace,
@@ -102,7 +103,7 @@ class GoServer {
     this.wrapper.differentStaticServer = !!this.wrapper.differentStaticServer || (this.wrapper.stack === "server");
 
     if (this.wrapper.secure) {
-      this.wrapper.template('server_go/echo/main_http2.go', 'server/main.go', {
+      this.wrapper.template('server_go/'+this.wrapper.webFrameworkServer+'/main_http2.go', 'server/main.go', {
         appName: this.wrapper.appName,
         userNameSpace: this.wrapper.userNameSpace,
         repoHostUrl: this.wrapper.repoHostUrl,
@@ -110,7 +111,7 @@ class GoServer {
       });
     }
     else {
-      this.wrapper.template('server_go/echo/main.go', 'server/main.go', {
+      this.wrapper.template('server_go/'+this.wrapper.webFrameworkServer+'/main.go', 'server/main.go', {
         appName: this.wrapper.appName,
         userNameSpace: this.wrapper.userNameSpace,
         repoHostUrl: this.wrapper.repoHostUrl,
@@ -119,28 +120,28 @@ class GoServer {
     }
 
     let _paths = [
-      ['server_go/echo/routes/routes.go', 'server/routes/routes.go'],
-      ['server_go/echo/routes/routes_test.go', 'server/routes/routes_test.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/routes/routes.go', 'server/routes/routes.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/routes/routes_test.go', 'server/routes/routes_test.go'],
 
-      ['server_go/echo/config/dbconfig.go', 'server/config/dbconfig.go'],
-      ['server_go/echo/config/dbconfig_test.go', 'server/config/dbconfig_test.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/config/dbconfig.go', 'server/config/dbconfig.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/config/dbconfig_test.go', 'server/config/dbconfig_test.go'],
 
-      ['server_go/echo/api/todo/routes/todoroutes.go', 'server/api/todo/routes/todoroutes.go'],
-      ['server_go/echo/api/todo/routes/todoroutes_test.go', 'server/api/todo/routes/todoroutes_test.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/api/todo/routes/todoroutes.go', 'server/api/todo/routes/todoroutes.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/api/todo/routes/todoroutes_test.go', 'server/api/todo/routes/todoroutes_test.go'],
 
-      ['server_go/echo/api/todo/model/todomodel.go', 'server/api/todo/model/todomodel.go'],
-      ['server_go/echo/api/todo/model/todomodel_test.go', 'server/api/todo/model/todomodel_test.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/api/todo/model/todomodel.go', 'server/api/todo/model/todomodel.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/api/todo/model/todomodel_test.go', 'server/api/todo/model/todomodel_test.go'],
 
-      ['server_go/echo/api/todo/dao/tododao.go', 'server/api/todo/dao/tododao.go'],
-      ['server_go/echo/api/todo/dao/tododao_test.go', 'server/api/todo/dao/tododao_test.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/api/todo/dao/tododao.go', 'server/api/todo/dao/tododao.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/api/todo/dao/tododao_test.go', 'server/api/todo/dao/tododao_test.go'],
 
-      ['server_go/echo/api/todo/controller/todocontroller.go', 'server/api/todo/controller/todocontroller.go'],
-      ['server_go/echo/api/todo/controller/todocontroller_test.go', 'server/api/todo/controller/todocontroller_test.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/api/todo/controller/todocontroller.go', 'server/api/todo/controller/todocontroller.go'],
+      ['server_go/'+this.wrapper.webFrameworkServer+'/api/todo/controller/todocontroller_test.go', 'server/api/todo/controller/todocontroller_test.go'],
     ]
 
     if (!this.wrapper.differentStaticServer) {
-      _paths.push(['server_go/echo/common/static/static.go', 'server/common/static/static.go'],
-                  ['server_go/echo/common/static/static_test.go', 'server/common/static/static_test.go']);
+      _paths.push(['server_go/'+this.wrapper.webFrameworkServer+'/common/static/static.go', 'server/common/static/static.go'],
+                  ['server_go/'+this.wrapper.webFrameworkServer+'/common/static/static_test.go', 'server/common/static/static_test.go']);
     }
 
     yoUtils.directory(this.wrapper, _paths, {
@@ -148,8 +149,8 @@ class GoServer {
       userNameSpace: this.wrapper.userNameSpace,
       repoHostUrl: this.wrapper.repoHostUrl,
       differentStaticServer: !!this.wrapper.differentStaticServer
-    });
+    });1
   }
 }
 
-exports.GoServer = GoServer;
+exports.GoBase = GoBase;

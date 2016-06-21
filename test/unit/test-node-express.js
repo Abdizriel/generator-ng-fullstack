@@ -5,26 +5,6 @@ import {NodeExpressStandard, NodeExpressBabel, NodeExpressTypescript} from '../.
 import {NodeFactory} from '../../_ng/server/node_factory';
 
 describe('node', () => {
-  describe('factory', () => {
-    it('should have the right values for the tokens()', () => {
-      expect(NodeFactory.tokensCompiler().NODE).to.equal('node');
-      expect(NodeFactory.tokensCompiler().BABEL).to.equal('babel');
-      expect(NodeFactory.tokensCompiler().TYPESCRIPT).to.equal('typescript');
-    });
-
-    it('should have an instance of NodeExpressStandard', () => {
-      expect(NodeFactory.build({transpilerServer: 'node', webFrameworkServer: 'express'}) instanceof NodeExpressStandard).to.be.true;
-    });
-
-    it('should have an instance of NodeExpressBabel', () => {
-      expect(NodeFactory.build({transpilerServer: 'babel', webFrameworkServer: 'express'}) instanceof NodeExpressBabel).to.be.true;
-    });
-
-    it('should have an instance of NodeExpressTypescript', () => {
-      expect(NodeFactory.build({transpilerServer: 'typescript', webFrameworkServer: 'express'}) instanceof NodeExpressTypescript).to.be.true;
-    });
-  });
-
   describe('node_standard', () => {
     describe('creation', () => {
       it('should have the wrapper as the object passed by param', () => {

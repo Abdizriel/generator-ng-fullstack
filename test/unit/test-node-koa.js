@@ -5,26 +5,6 @@ import {NodeKoaStandard, NodeKoaBabel, NodeKoaTypescript} from '../../_ng/server
 import {NodeFactory} from '../../_ng/server/node_factory';
 
 describe('node', () => {
-  describe('factory', () => {
-    it('should have the right values for the tokens()', () => {
-      expect(NodeFactory.tokensCompiler().NODE).to.equal('node');
-      expect(NodeFactory.tokensCompiler().BABEL).to.equal('babel');
-      expect(NodeFactory.tokensCompiler().TYPESCRIPT).to.equal('typescript');
-    });
-
-    it('should have an instance of NodeKoaStandard', () => {
-      expect(NodeFactory.build({transpilerServer: 'node', webFrameworkServer: 'koa'}) instanceof NodeKoaStandard).to.be.true;
-    });
-
-    it('should have an instance of NodeKoaBabel', () => {
-      expect(NodeFactory.build({transpilerServer: 'babel', webFrameworkServer: 'koa'}) instanceof NodeKoaBabel).to.be.true;
-    });
-
-    it('should have an instance of NodeKoaTypescript', () => {
-      expect(NodeFactory.build({transpilerServer: 'typescript', webFrameworkServer: 'koa'}) instanceof NodeKoaTypescript).to.be.true;
-    });
-  });
-
   describe('node_standard', () => {
     describe('creation', () => {
       it('should have the wrapper as the object passed by param', () => {
