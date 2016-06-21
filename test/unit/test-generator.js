@@ -104,11 +104,12 @@ describe('generator', () => {
       expect(_g.wrapper.directory).to.have.been.called;
     })
 
-    it('should have the right calls - server go', () => {
+    it('should have the right calls - server go - echo', () => {
       let _gen = {
         appName: 'a',
         username: 'b',
         server: 'go',
+        webFrameworkServer: 'echo',
         transpilerServer: undefined,
         userEmail: "c",
         repoHost: "github",
@@ -128,13 +129,39 @@ describe('generator', () => {
       expect(_g.wrapper.directory).to.have.been.called;
     })
 
-    it('should have the right calls - stack fullstack', () => {
+    it('should have the right calls - server go - gin', () => {
+      let _gen = {
+        appName: 'a',
+        username: 'b',
+        server: 'go',
+        webFrameworkServer: 'gin',
+        transpilerServer: undefined,
+        userEmail: "c",
+        repoHost: "github",
+        repoHostUrl: "github.com",
+        userNameSpace: "d",
+        template: () => {},
+        directory: () => {},
+        read: () => '{"a": true}',
+        write(){}
+      }
+
+      let _g = new MainGenerator(_gen);
+
+      _g.writing();
+
+      expect(_g.wrapper.template).to.have.been.called;
+      expect(_g.wrapper.directory).to.have.been.called;
+    })
+
+    it('should have the right calls - stack fullstack - echo', () => {
       let _gen = {
         appName: 'a',
         username: 'b',
         stack: 'fullstack',
         client: 'ng2',
         server: 'go',
+        webFrameworkServer: 'echo',
         transpilerServer: undefined,
         userEmail: "c",
         repoHost: "github",
@@ -154,12 +181,40 @@ describe('generator', () => {
       expect(_g.wrapper.directory).to.have.been.called;
     })
 
-    it('should have the right calls - stack server', () => {
+    it('should have the right calls - stack fullstack - gin', () => {
+      let _gen = {
+        appName: 'a',
+        username: 'b',
+        stack: 'fullstack',
+        client: 'ng2',
+        server: 'go',
+        webFrameworkServer: 'gin',
+        transpilerServer: undefined,
+        userEmail: "c",
+        repoHost: "github",
+        repoHostUrl: "github.com",
+        userNameSpace: "d",
+        template: () => {},
+        read: () => '{"a": true}',
+        write(){},
+        directory: () => {}
+      }
+
+      let _g = new MainGenerator(_gen);
+
+      _g.writing();
+
+      expect(_g.wrapper.template).to.have.been.called;
+      expect(_g.wrapper.directory).to.have.been.called;
+    })
+
+    it('should have the right calls - stack server - echo', () => {
       let _gen = {
         appName: 'a',
         username: 'b',
         stack: 'server',
         server: 'go',
+        webFrameworkServer: 'echo',
         transpilerServer: undefined,
         userEmail: "c",
         repoHost: "github",
@@ -179,13 +234,67 @@ describe('generator', () => {
       expect(_g.wrapper.directory).to.have.been.called;
     })
 
-    it('should have the right calls - stack client', () => {
+    it('should have the right calls - stack server - gin', () => {
+      let _gen = {
+        appName: 'a',
+        username: 'b',
+        stack: 'server',
+        server: 'go',
+        webFrameworkServer: 'gin',
+        transpilerServer: undefined,
+        userEmail: "c",
+        repoHost: "github",
+        repoHostUrl: "github.com",
+        userNameSpace: "d",
+        template: () => {},
+        directory: () => {},
+        read: () => '{"a": true}',
+        write(){}
+      }
+
+      let _g = new MainGenerator(_gen);
+
+      _g.writing();
+
+      expect(_g.wrapper.template).to.have.been.called;
+      expect(_g.wrapper.directory).to.have.been.called;
+    })
+
+    it('should have the right calls - stack client - echo', () => {
       let _gen = {
         appName: 'a',
         username: 'b',
         stack: 'client',
         client: 'ng1',
         server: 'go',
+        webFrameworkServer: 'echo',
+        transpilerServer: undefined,
+        userEmail: "c",
+        repoHost: "github",
+        repoHostUrl: "github.com",
+        userNameSpace: "d",
+        template: () => {},
+        directory: () => {},
+        read: () => '{"a": true}',
+        write(){}
+      }
+
+      let _g = new MainGenerator(_gen);
+
+      _g.writing();
+
+      expect(_g.wrapper.template).to.have.been.called;
+      expect(_g.wrapper.directory).to.have.been.called;
+    })
+
+    it('should have the right calls - stack client - gin', () => {
+      let _gen = {
+        appName: 'a',
+        username: 'b',
+        stack: 'client',
+        client: 'ng1',
+        server: 'go',
+        webFrameworkServer: 'gin',
         transpilerServer: undefined,
         userEmail: "c",
         repoHost: "github",

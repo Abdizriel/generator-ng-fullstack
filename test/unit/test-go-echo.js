@@ -2,23 +2,10 @@ import {expect} from 'chai';
 import sinon from 'sinon';
 import knownPaths from '../../_ng/utils/known_paths';
 import {GoFactory} from '../../_ng/server/go_factory';
-import {GoGin} from '../../_ng/server/go_gin';
+import {GoEcho} from '../../_ng/server/go_echo';
 
 describe('go', () => {
   describe('go', () => {
-    describe('creation', () => {
-      it('should have the wrapper as the object passed by param', () => {
-        let _newGenerator = {
-          a: true,
-          webFrameworkServer: 'echo'
-        };
-
-        let _n = new GoBase(_newGenerator);
-
-        expect(_n.wrapper).to.equal(_newGenerator);
-      })
-    })
-
     describe('copyFiles', () => {
       it('should call the right methods with the right params', () => {
         let _newGenerator = {
@@ -30,7 +17,7 @@ describe('go', () => {
           template: sinon.spy()
         }
 
-        let _n = new GoBase(_newGenerator);
+        let _n = new GoEcho(_newGenerator);
 
         _n.copyFiles();
 
@@ -137,7 +124,7 @@ describe('go', () => {
           template: sinon.spy()
         }
 
-        let _n = new GoBase(_newGenerator);
+        let _n = new GoEcho(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -291,7 +278,7 @@ describe('go', () => {
           secure: true
         }
 
-        let _n = new GoBase(_newGenerator);
+        let _n = new GoEcho(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -445,7 +432,7 @@ describe('go', () => {
           secure: true
         }
 
-        let _n = new GoBase(_newGenerator);
+        let _n = new GoEcho(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -601,7 +588,7 @@ describe('go', () => {
           secure: true
         }
 
-        let _n = new GoBase(_newGenerator);
+        let _n = new GoEcho(_newGenerator);
 
         _n.copyForMainGenerator();
 
@@ -738,7 +725,7 @@ describe('go', () => {
           secure: true
         }
 
-        let _n = new GoBase(_newGenerator);
+        let _n = new GoEcho(_newGenerator);
 
         _n.copyForMainGenerator();
 

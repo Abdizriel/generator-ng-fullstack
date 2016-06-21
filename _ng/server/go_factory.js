@@ -4,7 +4,7 @@ const GoEcho = require('./go_echo').GoEcho;
 const GoGin = require('./go_gin').GoGin;
 
 class GoFactory {
-  static tokensServer() {
+  static tokensWebFramework() {
     return {
       ECHO: "echo",
       GIN: "gin"
@@ -13,8 +13,8 @@ class GoFactory {
 
   static build(generator) {
     switch (generator.webFrameworkServer) {
-      case GoFactory.tokensServer().ECHO: return new GoEcho(generator);
-      case GoFactory.tokensServer().GIN: return new GoBin(generator);
+      case GoFactory.tokensWebFramework().ECHO: return new GoEcho(generator);
+      case GoFactory.tokensWebFramework().GIN: return new GoGin(generator);
     }
   }
 }

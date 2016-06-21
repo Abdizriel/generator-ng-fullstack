@@ -247,14 +247,24 @@ exports.MainGenerator = class MainGenerator {
   promptWebFrameworkServer() {
     const done = this.wrapper.async();
 
-    let _prompts = [{
-      type: "list",
-      name: "webFrameworkServer",
-      message: "What framework do you want to use in server side?",
-      choices: [NodeFactory.tokensWebFramework().EXPRESS, NodeFactory.tokensWebFramework().KOA],
-      default: 0,
-      when: () => this.wrapper.server === ServerFactory.tokens().NODE
-    }];
+    let _prompts = [
+      {
+        type: "list",
+        name: "webFrameworkServer",
+        message: "What framework do you want to use in server side?",
+        choices: [NodeFactory.tokensWebFramework().EXPRESS, NodeFactory.tokensWebFramework().KOA],
+        default: 0,
+        when: () => this.wrapper.server === ServerFactory.tokens().NODE
+      },
+      {
+        type: "list",
+        name: "webFrameworkServer",
+        message: "What framework do you want to use in server side?",
+        choices: [NodeFactory.tokensWebFramework().ECHO, NodeFactory.tokensWebFramework().GIN],
+        default: 0,
+        when: () => this.wrapper.server === ServerFactory.tokens().GO
+      }
+    ];
 
     this.wrapper.prompt(_prompts, (props) => {
       this.wrapper.webFrameworkServer = props.webFrameworkServer;

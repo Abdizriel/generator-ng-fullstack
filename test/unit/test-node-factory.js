@@ -36,15 +36,15 @@ describe('node_factory', () => {
 
     describe('Express', () => {
       it('should have an instance of NodeKoaStandard', () => {
-        expect(NodeFactory.build({transpilerServer: 'node', webFrameworkServer: 'express'}) instanceof NodeKoaStandard).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'node', webFrameworkServer: 'express'}) instanceof NodeExpressStandard).to.be.true;
       });
 
       it('should have an instance of NodeKoaBabel', () => {
-        expect(NodeFactory.build({transpilerServer: 'babel', webFrameworkServer: 'express'}) instanceof NodeKoaBabel).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'babel', webFrameworkServer: 'express'}) instanceof NodeExpressBabel).to.be.true;
       });
 
       it('should have an instance of NodeKoaTypescript', () => {
-        expect(NodeFactory.build({transpilerServer: 'typescript', webFrameworkServer: 'express'}) instanceof NodeKoaTypescript).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'typescript', webFrameworkServer: 'express'}) instanceof NodeExpressTypescript).to.be.true;
       });
     })
   })

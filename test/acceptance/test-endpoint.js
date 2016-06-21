@@ -101,34 +101,70 @@ describe('NgFullstack:endpoint', () => {
   })
 
   describe('go', () => {
-    before((done) => {
-      helpers
-      .run(path.join(__dirname, '../../endpoint'))
-      .inTmpDir(function() {
-        MockConfigFile.create({
-          "generator-ng-fullstack": {
-            "server": "go"
-          }
-        }, this.async());
-      })
-      .withArguments('endp')
-      .withPrompts({appName: "a", userNameSpace: "b", server: "go"})
-      .withOptions({feature: 'todo2'})
-      .on('end', done);
-    });
+    describe('echo', () => {
+      before((done) => {
+        helpers
+        .run(path.join(__dirname, '../../endpoint'))
+        .inTmpDir(function() {
+          MockConfigFile.create({
+            "generator-ng-fullstack": {
+              "server": "go",
+              "webFrameworkServer": "echo"
+            }
+          }, this.async());
+        })
+        .withArguments('endp')
+        .withPrompts({appName: "a", userNameSpace: "b", server: "go", webFrameworkServer: "echo"})
+        .withOptions({feature: 'todo2'})
+        .on('end', done);
+      });
 
-    it('creates files', () => {
-      assert.file([
-        'server/api/todo2/controller/endpcontroller.go',
-        'server/api/todo2/dao/endpdao.go',
-        'server/api/todo2/model/endpmodel.go',
-        'server/api/todo2/routes/endproute.go',
+      it('creates files', () => {
+        assert.file([
+          'server/api/todo2/controller/endpcontroller.go',
+          'server/api/todo2/dao/endpdao.go',
+          'server/api/todo2/model/endpmodel.go',
+          'server/api/todo2/routes/endproute.go',
 
-        'server/api/todo2/controller/endpcontroller_test.go',
-        'server/api/todo2/routes/endproute_test.go',
-        'server/api/todo2/dao/endpdao_test.go',
-        'server/api/todo2/model/endpmodel_test.go'
-      ]);
-    });
+          'server/api/todo2/controller/endpcontroller_test.go',
+          'server/api/todo2/routes/endproute_test.go',
+          'server/api/todo2/dao/endpdao_test.go',
+          'server/api/todo2/model/endpmodel_test.go'
+        ]);
+      });
+    })
+
+    describe('gin', () => {
+      before((done) => {
+        helpers
+        .run(path.join(__dirname, '../../endpoint'))
+        .inTmpDir(function() {
+          MockConfigFile.create({
+            "generator-ng-fullstack": {
+              "server": "go",
+              "webFrameworkServer": "gin"
+            }
+          }, this.async());
+        })
+        .withArguments('endp')
+        .withPrompts({appName: "a", userNameSpace: "b", server: "go", webFrameworkServer: "gin"})
+        .withOptions({feature: 'todo2'})
+        .on('end', done);
+      });
+
+      it('creates files', () => {
+        assert.file([
+          'server/api/todo2/controller/endpcontroller.go',
+          'server/api/todo2/dao/endpdao.go',
+          'server/api/todo2/model/endpmodel.go',
+          'server/api/todo2/routes/endproute.go',
+
+          'server/api/todo2/controller/endpcontroller_test.go',
+          'server/api/todo2/routes/endproute_test.go',
+          'server/api/todo2/dao/endpdao_test.go',
+          'server/api/todo2/model/endpmodel_test.go'
+        ]);
+      });
+    })
   })
 });
