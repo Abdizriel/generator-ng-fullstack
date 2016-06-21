@@ -22,29 +22,29 @@ describe('node_factory', () => {
   describe('instance', () => {
     describe('Koa', () => {
       it('should have an instance of NodeKoaStandard', () => {
-        expect(NodeFactory.build({transpilerServer: 'node', webFrameworkServer: 'koa'}) instanceof NodeKoaStandard).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'node', webFrameworkNodeServer: 'koa'}) instanceof NodeKoaStandard).to.be.true;
       });
 
       it('should have an instance of NodeKoaBabel', () => {
-        expect(NodeFactory.build({transpilerServer: 'babel', webFrameworkServer: 'koa'}) instanceof NodeKoaBabel).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'babel', webFrameworkNodeServer: 'koa'}) instanceof NodeKoaBabel).to.be.true;
       });
 
       it('should have an instance of NodeKoaTypescript', () => {
-        expect(NodeFactory.build({transpilerServer: 'typescript', webFrameworkServer: 'koa'}) instanceof NodeKoaTypescript).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'typescript', webFrameworkNodeServer: 'koa'}) instanceof NodeKoaTypescript).to.be.true;
       });
     })
 
     describe('Express', () => {
       it('should have an instance of NodeKoaStandard', () => {
-        expect(NodeFactory.build({transpilerServer: 'node', webFrameworkServer: 'express'}) instanceof NodeExpressStandard).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'node', webFrameworkNodeServer: 'express'}) instanceof NodeExpressStandard).to.be.true;
       });
 
       it('should have an instance of NodeKoaBabel', () => {
-        expect(NodeFactory.build({transpilerServer: 'babel', webFrameworkServer: 'express'}) instanceof NodeExpressBabel).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'babel', webFrameworkNodeServer: 'express'}) instanceof NodeExpressBabel).to.be.true;
       });
 
       it('should have an instance of NodeKoaTypescript', () => {
-        expect(NodeFactory.build({transpilerServer: 'typescript', webFrameworkServer: 'express'}) instanceof NodeExpressTypescript).to.be.true;
+        expect(NodeFactory.build({transpilerServer: 'typescript', webFrameworkNodeServer: 'express'}) instanceof NodeExpressTypescript).to.be.true;
       });
     })
   })

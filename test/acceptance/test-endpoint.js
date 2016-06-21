@@ -14,7 +14,7 @@ describe('NgFullstack:endpoint', () => {
           MockConfigFile.create({
             "generator-ng-fullstack": {
               "transpilerServer": "node",
-              "webFrameworkServer": "express",
+              "webFrameworkNodeServer": "express",
               "server": "node"
             }
           }, this.async());
@@ -45,7 +45,7 @@ describe('NgFullstack:endpoint', () => {
           MockConfigFile.create({
             "generator-ng-fullstack": {
               "transpilerServer": "babel",
-              "webFrameworkServer": "express",
+              "webFrameworkNodeServer": "express",
               "server": "node"
             }
           }, this.async());
@@ -76,7 +76,7 @@ describe('NgFullstack:endpoint', () => {
           MockConfigFile.create({
             "generator-ng-fullstack": {
               "transpilerServer": "typescript",
-              "webFrameworkServer": "express",
+              "webFrameworkNodeServer": "express",
               "server": "node"
             }
           }, this.async());
@@ -109,12 +109,12 @@ describe('NgFullstack:endpoint', () => {
           MockConfigFile.create({
             "generator-ng-fullstack": {
               "server": "go",
-              "webFrameworkServer": "echo"
+              "webFrameworkGoServer": "echo"
             }
           }, this.async());
         })
         .withArguments('endp')
-        .withPrompts({appName: "a", userNameSpace: "b", server: "go", webFrameworkServer: "echo"})
+        .withPrompts({appName: "a", userNameSpace: "b", server: "go", webFrameworkGoServer: "echo"})
         .withOptions({feature: 'todo2'})
         .on('end', done);
       });
@@ -142,12 +142,12 @@ describe('NgFullstack:endpoint', () => {
           MockConfigFile.create({
             "generator-ng-fullstack": {
               "server": "go",
-              "webFrameworkServer": "gin"
+              "webFrameworkGoServer": "gin"
             }
           }, this.async());
         })
         .withArguments('endp')
-        .withPrompts({appName: "a", userNameSpace: "b", server: "go", webFrameworkServer: "gin"})
+        .withPrompts({appName: "a", userNameSpace: "b", server: "go", webFrameworkGoServer: "gin"})
         .withOptions({feature: 'todo2'})
         .on('end', done);
       });

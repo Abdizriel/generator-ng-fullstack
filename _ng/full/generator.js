@@ -47,7 +47,7 @@ exports.MainGenerator = class MainGenerator {
         usesTypescript: _usesTypescript,
         client: _client,
         clientOnly: _clientOnly,
-        webFrameworkServer: this.wrapper.webFrameworkServer
+        webFrameworkNodeServer: this.wrapper.webFrameworkNodeServer
       });
 
       this.wrapper.template('_gulpfile.babel.js', 'gulpfile.babel.js', _app);
@@ -244,21 +244,37 @@ exports.MainGenerator = class MainGenerator {
     this.wrapper.config.save();
   }
 
-  promptWebFrameworkServer() {
+  promptWebFrameworkNodeServer() {
     const done = this.wrapper.async();
 
     let _prompts = [
       {
         type: "list",
-        name: "webFrameworkServer",
+        name: "webFrameworkNodeServer",
         message: "What framework do you want to use in server side?",
         choices: [NodeFactory.tokensWebFramework().EXPRESS, NodeFactory.tokensWebFramework().KOA],
         default: 0,
         when: () => this.wrapper.server === ServerFactory.tokens().NODE
-      },
+      }
+    ];
+
+    this.wrapper.prompt(_prompts, (props) => {
+      this.wrapper.webFrameworkNodeServer = props.webFrameworkNodeServer;
+      this.wrapper.config.set('webFrameworkNodeServer', this.wrapper.webFrameworkNodeServer);
+
+      done();
+    });
+
+    this.wrapper.config.save();
+  }
+
+  promptWebFrameworkGoServer() {
+    const done = this.wrapper.async();
+
+    let _prompts = [
       {
         type: "list",
-        name: "webFrameworkServer",
+        name: "webFrameworkGoServer",
         message: "What framework do you want to use in server side?",
         choices: [NodeFactory.tokensWebFramework().ECHO, NodeFactory.tokensWebFramework().GIN],
         default: 0,
@@ -267,8 +283,8 @@ exports.MainGenerator = class MainGenerator {
     ];
 
     this.wrapper.prompt(_prompts, (props) => {
-      this.wrapper.webFrameworkServer = props.webFrameworkServer;
-      this.wrapper.config.set('webFrameworkServer', this.wrapper.webFrameworkServer);
+      this.wrapper.webFrameworkGoServer = props.webFrameworkGoServer;
+      this.wrapper.config.set('webFrameworkGoServer', this.wrapper.webFrameworkGoServer);
 
       done();
     });

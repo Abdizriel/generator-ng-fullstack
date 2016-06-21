@@ -10,14 +10,14 @@ describe('EndpointSubGenerator', () => {
       let _gen = {
         a: true,
         transpilerServer: 'node',
-        webFrameworkServer: 'express',
+        webFrameworkNodeServer: 'express',
         server: 'node',
         config: {
           get(token) {
             switch (token) {
               case "server": return "node";
               case "transpilerServer": return "node";
-              case "webFrameworkServer": return "express";
+              case "webFrameworkNodeServer": return "express";
             }
           }
         }
@@ -33,13 +33,13 @@ describe('EndpointSubGenerator', () => {
       let _gen = {
         argument: () => {},
         transpilerServer: 'node',
-        webFrameworkServer: 'express',
+        webFrameworkNodeServer: 'express',
         config: {
           get(token) {
             switch (token) {
               case "server": return "node";
               case "transpilerServer": return "node";
-              case "webFrameworkServer": return "express";
+              case "webFrameworkNodeServer": return "express";
             }
           }
         }
@@ -61,14 +61,14 @@ describe('EndpointSubGenerator', () => {
         name: 'a',
         options: {},
         transpilerServer: 'node',
-        webFrameworkServer: 'express',
+        webFrameworkNodeServer: 'express',
         template: () => {},
         config: {
           get(token) {
             switch (token) {
               case "server": return "node";
               case "transpilerServer": return "node";
-              case "webFrameworkServer": return "express";
+              case "webFrameworkNodeServer": return "express";
             }
           }
         }
@@ -84,14 +84,14 @@ describe('EndpointSubGenerator', () => {
         name: 'a',
         options: {feature: 'c'},
         transpilerServer: 'node',
-        webFrameworkServer: 'express',
+        webFrameworkNodeServer: 'express',
         template: () => {},
         config: {
           get(token) {
             switch (token) {
               case "server": return "node";
               case "transpilerServer": return "node";
-              case "webFrameworkServer": return "express";
+              case "webFrameworkNodeServer": return "express";
             }
           }
         }

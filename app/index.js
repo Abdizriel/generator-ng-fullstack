@@ -40,8 +40,12 @@ module.exports = class NgFullstack extends Base {
       this.generator.promptClient();
     }
 
-    promptWebFrameworkServer() {
-      this.generator.promptWebFrameworkServer();
+    promptWebFrameworkNodeServer() {
+      this.generator.promptWebFrameworkNodeServer();
+    }
+
+    promptWebFrameworkGoServer() {
+      this.generator.promptWebFrameworkGoServer();
     }
 
     promptUserTranspilerServer() {

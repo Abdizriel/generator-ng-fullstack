@@ -16,7 +16,7 @@ describe('go', () => {
     it('should have the GoEcho instance', () => {
       let _newGenerator = {
         a: true,
-        webFrameworkServer: 'echo'
+        webFrameworkGoServer: 'echo'
       };
 
       expect(GoFactory.build(_newGenerator) instanceof GoEcho).to.equal(true);
@@ -25,7 +25,7 @@ describe('go', () => {
     it('should have the GoGin instance', () => {
       let _newGenerator = {
         a: true,
-        webFrameworkServer: 'gin'
+        webFrameworkGoServer: 'gin'
       };
 
       expect(GoFactory.build(_newGenerator) instanceof GoGin).to.equal(true);

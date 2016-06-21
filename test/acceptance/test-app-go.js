@@ -104,7 +104,7 @@ describe('ng-fullstack -> golang', () => {
         server: "go",
         stack: 'fullstack',
         client: 'ng2',
-        webFrameworkServer: 'echo'
+        webFrameworkGoServer: 'echo'
       })
       .withOptions({ 'skip-install': true })
       .on('end', done);
@@ -163,7 +163,7 @@ describe('ng-fullstack -> golang', () => {
         server: "go",
         stack: 'fullstack',
         client: 'ng1',
-        webFrameworkServer: 'echo'
+        webFrameworkGoServer: 'echo'
       })
       .withOptions({ 'skip-install': true })
       .on('end', done);
@@ -221,7 +221,7 @@ describe('ng-fullstack -> golang', () => {
           server: "go",
           stack: 'fullstack',
           client: 'ng1',
-        webFrameworkServer: 'echo'
+        webFrameworkGoServer: 'echo'
         })
         .withOptions({ 'skip-install': true })
         .on('end', done);
@@ -291,7 +291,7 @@ describe('ng-fullstack -> golang', () => {
             server: "go",
             stack: 'fullstack',
             client: 'ng1',
-            webFrameworkServer: 'echo'
+            webFrameworkGoServer: 'echo'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -346,7 +346,7 @@ describe('ng-fullstack -> golang', () => {
             server: "go",
             stack: 'fullstack',
             client: 'ng1',
-            webFrameworkServer: 'echo'
+            webFrameworkGoServer: 'echo'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -404,7 +404,7 @@ describe('ng-fullstack -> golang', () => {
             server: "go",
             stack: 'server',
             client: 'ng1',
-            webFrameworkServer: 'echo'
+            webFrameworkGoServer: 'echo'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -469,7 +469,7 @@ describe('ng-fullstack -> golang', () => {
             server: "go",
             stack: 'fullstack',
             client: 'ng1',
-            webFrameworkServer: 'echo'
+            webFrameworkGoServer: 'echo'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -535,7 +535,7 @@ describe('ng-fullstack -> golang', () => {
             stack: 'fullstack',
             repoHost: "github",
             client: 'ng1',
-            webFrameworkServer: 'echo'
+            webFrameworkGoServer: 'echo'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -601,7 +601,7 @@ describe('ng-fullstack -> golang', () => {
             stack: 'fullstack',
             repoHost: "bitbucket",
             client: 'ng1',
-            webFrameworkServer: 'echo'
+            webFrameworkGoServer: 'echo'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -667,7 +667,7 @@ describe('ng-fullstack -> golang', () => {
             stack: 'fullstack',
             repoHost: "gitlab",
             client: 'ng1',
-            webFrameworkServer: 'echo'
+            webFrameworkGoServer: 'echo'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -781,7 +781,7 @@ describe('ng-fullstack -> golang', () => {
         server: "go",
         stack: 'fullstack',
         client: 'ng2',
-        webFrameworkServer: 'gin'
+        webFrameworkGoServer: 'gin'
       })
       .withOptions({ 'skip-install': true })
       .on('end', done);
@@ -840,7 +840,7 @@ describe('ng-fullstack -> golang', () => {
         server: "go",
         stack: 'fullstack',
         client: 'ng1',
-        webFrameworkServer: 'gin'
+        webFrameworkGoServer: 'gin'
       })
       .withOptions({ 'skip-install': true })
       .on('end', done);
@@ -898,7 +898,7 @@ describe('ng-fullstack -> golang', () => {
           server: "go",
           stack: 'fullstack',
           client: 'ng1',
-        webFrameworkServer: 'gin'
+        webFrameworkGoServer: 'gin'
         })
         .withOptions({ 'skip-install': true })
         .on('end', done);
@@ -968,7 +968,7 @@ describe('ng-fullstack -> golang', () => {
             server: "go",
             stack: 'fullstack',
             client: 'ng1',
-            webFrameworkServer: 'gin'
+            webFrameworkGoServer: 'gin'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -1023,7 +1023,7 @@ describe('ng-fullstack -> golang', () => {
             server: "go",
             stack: 'fullstack',
             client: 'ng1',
-            webFrameworkServer: 'gin'
+            webFrameworkGoServer: 'gin'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -1081,7 +1081,7 @@ describe('ng-fullstack -> golang', () => {
             server: "go",
             stack: 'server',
             client: 'ng1',
-            webFrameworkServer: 'gin'
+            webFrameworkGoServer: 'gin'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -1146,7 +1146,7 @@ describe('ng-fullstack -> golang', () => {
             server: "go",
             stack: 'fullstack',
             client: 'ng1',
-            webFrameworkServer: 'gin'
+            webFrameworkGoServer: 'gin'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -1212,7 +1212,7 @@ describe('ng-fullstack -> golang', () => {
             stack: 'fullstack',
             repoHost: "github",
             client: 'ng1',
-            webFrameworkServer: 'gin'
+            webFrameworkGoServer: 'gin'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -1278,7 +1278,7 @@ describe('ng-fullstack -> golang', () => {
             stack: 'fullstack',
             repoHost: "bitbucket",
             client: 'ng1',
-            webFrameworkServer: 'gin'
+            webFrameworkGoServer: 'gin'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
@@ -1344,7 +1344,7 @@ describe('ng-fullstack -> golang', () => {
             stack: 'fullstack',
             repoHost: "gitlab",
             client: 'ng1',
-            webFrameworkServer: 'gin'
+            webFrameworkGoServer: 'gin'
           })
           .withOptions({ 'skip-install': true })
           .on('end', done);
